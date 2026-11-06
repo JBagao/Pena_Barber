@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pena Hair Studio</title>
+<meta name="description" content="Pena Hair Studio – barbearia. Projeto de portfolio (simulação).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Archivo+Black&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#141414; --near-black:#1c1c1c; --grey-900:#2b2b2b; --grey-300:#c9c9c9;
+  --grey-200:#e2e2e0; --grey-100:#eeeeec; --white:#ffffff; --line:#d6d6d3; --green:#2e7d46;
+  --font:'Archivo',sans-serif; --font-black:'Archivo Black',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--black);background:var(--white);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{font-family:inherit;cursor:pointer}
+.wrap{max-width:1240px;margin:0 auto;padding:0 40px}
+
+/* wordmark (fallback do logótipo) */
+.wordmark{font-family:var(--font-black);font-size:20px;letter-spacing:1px;line-height:1;display:inline-flex;flex-direction:column}
+.wordmark small{font-family:var(--font);font-weight:700;font-size:9px;letter-spacing:4px;margin-top:4px}
+.hero-logo .wordmark{color:#fff;font-size:48px}
+.hero-logo .wordmark small{font-size:13px;letter-spacing:7px;margin-top:8px}
+
+/* HEADER */
+header{background:var(--grey-100);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 40px;max-width:1240px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:12px}
+.logo img{height:40px;width:auto;flex-shrink:0}
+nav{display:flex;align-items:center;gap:34px}
+nav a{font-size:13px;font-weight:600;letter-spacing:.6px;position:relative;padding-bottom:4px}
+nav a.active{border-bottom:2px solid var(--black)}
+nav a:hover{opacity:.6}
+
+.btn{display:inline-flex;align-items:center;gap:10px;font-size:12.5px;font-weight:700;letter-spacing:.6px;padding:13px 22px;border:1.5px solid var(--black);background:transparent;color:var(--black);white-space:nowrap;transition:background .18s ease,color .18s ease}
+.btn:hover{background:var(--black);color:var(--white)}
+.btn svg{width:16px;height:16px;flex-shrink:0}
+.btn-arrow svg{transition:transform .18s ease}
+.btn-arrow:hover svg{transform:translateX(3px)}
+
+/* HERO */
+.hero{position:relative;min-height:760px;background:
+  linear-gradient(100deg,rgba(8,8,8,.92) 0%,rgba(8,8,8,.82) 32%,rgba(8,8,8,.35) 55%,rgba(8,8,8,.12) 72%,rgba(8,8,8,.05) 100%),
+  url('imagens/fundo-computador.png') center/cover no-repeat,
+  radial-gradient(circle at 80% 30%,#3a3a3a 0%,#141414 70%);
+  background-color:#141414;color:var(--white);overflow:hidden;display:flex;align-items:center}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,0) 25%,rgba(0,0,0,0) 70%,rgba(0,0,0,.35) 100%)}
+.hero-content{position:relative;z-index:2;max-width:1240px;margin:0 auto;width:100%;padding:0 40px}
+.hero-inner{max-width:560px;padding:70px 0}
+.hero-logo{margin-bottom:36px}
+.hero-logo img{height:140px;width:auto;filter:invert(1) brightness(1.15)}
+.hero h1{font-family:var(--font-black);font-size:44px;line-height:1.12;letter-spacing:.2px;margin-bottom:22px}
+.hero h1 span{color:var(--grey-300)}
+.hero p{font-size:16px;line-height:1.6;color:#d9d9d7;max-width:400px;margin-bottom:36px}
+.hero .btn{background:var(--white);color:var(--black);border-color:var(--white)}
+.hero .btn:hover{background:transparent;color:var(--white)}
+
+/* SERVICES */
+.services{background:var(--grey-100);padding:80px 0 90px;border-bottom:1px solid var(--line)}
+.section-title{text-align:center;font-family:var(--font-black);font-size:22px;letter-spacing:2px;margin-bottom:56px;position:relative}
+.section-title::after{content:"";display:block;width:46px;height:3px;background:var(--black);margin:16px auto 0}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);max-width:900px;margin:0 auto}
+.service{text-align:center;padding:0 30px;border-left:1px solid var(--line)}
+.service:first-child{border-left:none}
+.service svg{width:52px;height:52px;margin:0 auto 24px;stroke:var(--black)}
+.service h3{font-size:15px;font-weight:800;letter-spacing:1px;line-height:1.5}
+.service .rule{width:26px;height:2px;background:var(--black);margin:14px auto 0;opacity:.5}
+
+/* BARBERS */
+.barbers{padding:84px 0 70px;background:var(--white)}
+.barbers-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:50px}
+.barber-card{border:1px solid var(--line);padding:36px 20px 26px;text-align:center;transition:border-color .18s ease,transform .18s ease}
+.barber-card:hover{border-color:var(--black);transform:translateY(-3px)}
+.avatar{width:78px;height:78px;border-radius:50%;border:1.5px solid var(--black);display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.avatar svg{width:38px;height:38px}
+.barber-card h4{font-size:13px;font-weight:800;letter-spacing:.8px;margin-bottom:16px}
+.social-row{display:flex;justify-content:center;gap:14px}
+.social-row a{width:30px;height:30px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .18s ease,border-color .18s}
+.social-row a:hover{background:var(--black);border-color:var(--black)}
+.social-row a:hover svg{stroke:var(--white)}
+.social-row svg{width:14px;height:14px}
+.cta-center{text-align:center}
+.cta-center .btn{padding:14px 30px}
+
+/* FOOTER */
+footer{background:var(--grey-100);border-top:1px solid var(--line);padding:56px 0}
+.footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.foot-item{display:flex;gap:16px}
+.foot-icon{width:44px;height:44px;border:1.5px solid var(--black);border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.foot-icon svg{width:20px;height:20px}
+.foot-item h5{font-size:14px;font-weight:800;letter-spacing:.5px;margin-bottom:8px;line-height:1.3}
+.foot-item p,.foot-item a.link{font-size:13.5px;color:var(--grey-900);line-height:1.5}
+.foot-item a.link{text-decoration:underline;display:inline-block;margin-bottom:10px}
+.foot-socials{display:flex;gap:12px;margin-top:10px}
+.foot-socials a{width:30px;height:30px;border:1px solid var(--black);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.foot-socials svg{width:14px;height:14px}
+.foot-item .btn{margin-top:12px;padding:12px 20px;font-size:12px}
+.sim-footer{background:var(--black);color:var(--grey-300);text-align:center;font-size:11.5px;letter-spacing:.4px;padding:14px 20px;line-height:1.5}
+
+/* RESPONSIVE BASE */
+@media (max-width:980px){
+  .header-inner{padding:16px 24px}
+  .wrap{padding:0 24px}
+  .hero-content{padding:0 24px}
+  .hero h1{font-size:32px}
+  .services-grid{grid-template-columns:1fr;gap:44px}
+  .service{border-left:none;border-top:1px solid var(--line);padding-top:34px}
+  .service:first-child{border-top:none;padding-top:0}
+  .footer-grid{grid-template-columns:1fr;gap:34px}
+}
+@media (max-width:560px){
+  .barbers-grid{grid-template-columns:1fr}
+  .hero{min-height:640px}
+}
+
+/* ===== MODAL DE MARCAÇÃO ===== */
+.booking-overlay{position:fixed;inset:0;background:rgba(10,10,10,.72);display:none;align-items:flex-start;justify-content:center;z-index:200;padding:40px 20px;overflow-y:auto;animation:fadeIn .2s ease}
+.booking-overlay.open{display:flex}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.booking-modal{background:var(--white);width:100%;max-width:640px;border:1px solid var(--line);animation:slideUp .25s ease}
+@keyframes slideUp{from{transform:translateY(16px);opacity:0}to{transform:translateY(0);opacity:1}}
+.booking-head{display:flex;align-items:center;justify-content:space-between;padding:22px 26px;border-bottom:1px solid var(--line);background:var(--black);color:var(--white)}
+.booking-head h3{font-family:var(--font-black);font-size:16px;letter-spacing:1px}
+.booking-close{background:none;border:none;color:var(--white);font-size:22px;line-height:1;padding:4px 8px;opacity:.75}
+.booking-close:hover{opacity:1}
+.sim-banner{background:#fff6d6;color:#6b5400;border-bottom:1px solid #ecd98a;font-size:11.5px;font-weight:600;padding:9px 26px;line-height:1.4}
+.booking-steps{display:flex;border-bottom:1px solid var(--line);background:var(--grey-100)}
+.booking-step-tab{flex:1;text-align:center;padding:12px 6px;font-size:10.5px;font-weight:700;letter-spacing:.6px;color:var(--grey-900);border-bottom:2px solid transparent;opacity:.5}
+.booking-step-tab.active{opacity:1;border-bottom-color:var(--black)}
+.booking-step-tab.done{opacity:.85}
+.booking-body{padding:26px;min-height:340px}
+.booking-panel{display:none}
+.booking-panel.active{display:block;animation:fadeIn .18s ease}
+.field-label{font-size:11px;font-weight:800;letter-spacing:.8px;margin-bottom:12px;display:block;color:var(--black)}
+.choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.choice-card{border:1.5px solid var(--line);padding:14px;cursor:pointer;font-size:13px;font-weight:700;letter-spacing:.3px;transition:border-color .15s,background .15s}
+.choice-card small{display:block;font-weight:500;font-size:11px;color:var(--grey-900);margin-top:3px;letter-spacing:0}
+.choice-card:hover{border-color:var(--black)}
+.choice-card.selected{border-color:var(--black);background:var(--black);color:var(--white)}
+.choice-card.selected small{color:var(--grey-300)}
+.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.cal-head span{font-weight:800;font-size:13px;letter-spacing:.5px;text-transform:capitalize}
+.cal-nav{display:flex;gap:8px}
+.cal-nav button{width:30px;height:30px;border:1.5px solid var(--line);background:var(--white);font-size:14px;display:flex;align-items:center;justify-content:center}
+.cal-nav button:hover{border-color:var(--black)}
+.cal-nav button:disabled{opacity:.3;cursor:not-allowed}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:26px}
+.cal-dow{text-align:center;font-size:10px;font-weight:800;color:var(--grey-900);padding-bottom:4px;letter-spacing:.5px}
+.cal-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:600;border:1.5px solid transparent;cursor:pointer;border-radius:2px}
+.cal-day.empty{cursor:default}
+.cal-day.disabled{color:var(--grey-300);cursor:not-allowed;text-decoration:line-through}
+.cal-day.available:hover{border-color:var(--black)}
+.cal-day.selected{background:var(--black);color:var(--white)}
+.cal-day.today{border-color:var(--grey-900)}
+.time-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.time-slot{padding:10px 4px;text-align:center;border:1.5px solid var(--line);font-size:12.5px;font-weight:700;cursor:pointer}
+.time-slot:hover{border-color:var(--black)}
+.time-slot.selected{background:var(--black);color:var(--white);border-color:var(--black)}
+.time-slot.taken{color:var(--grey-300);text-decoration:line-through;cursor:not-allowed;background:var(--grey-100)}
+.time-empty-msg{grid-column:1/-1;font-size:13px;color:var(--grey-900);padding:30px 0;text-align:center}
+.form-grid{display:grid;gap:16px;margin-bottom:6px}
+.form-field input{width:100%;padding:12px 14px;border:1.5px solid var(--line);font-family:inherit;font-size:13.5px;background:var(--white)}
+.form-field input:focus{outline:none;border-color:var(--black)}
+.form-field label{font-size:11px;font-weight:700;letter-spacing:.5px;margin-bottom:6px;display:block;color:var(--grey-900)}
+.summary-box{border:1.5px solid var(--black);padding:18px 20px;margin-bottom:20px}
+.summary-row{display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-bottom:1px dashed var(--line);gap:16px}
+.summary-row:last-child{border-bottom:none}
+.summary-row span:first-child{color:var(--grey-900);font-weight:600}
+.summary-row span:last-child{font-weight:700;text-align:right}
+.booking-foot{display:flex;justify-content:space-between;align-items:center;padding:18px 26px;border-top:1px solid var(--line);gap:12px}
+.booking-foot .btn{padding:12px 20px;font-size:12px}
+.btn-ghost{border-color:var(--line);color:var(--grey-900)}
+.btn-ghost:hover{border-color:var(--black);background:transparent;color:var(--black)}
+.btn-primary{background:var(--black);color:var(--white)}
+.btn-primary:hover{background:var(--grey-900);color:var(--white)}
+.btn-primary:disabled{opacity:.35;cursor:not-allowed;background:var(--black);color:var(--white)}
+.success-wrap{text-align:center;padding:20px 0 6px}
+.success-icon{width:60px;height:60px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.success-icon svg{width:28px;height:28px;stroke:#fff}
+.success-wrap h4{font-family:var(--font-black);font-size:18px;letter-spacing:.5px;margin-bottom:8px}
+.success-wrap p{font-size:13.5px;color:var(--grey-900);max-width:380px;margin:0 auto 26px;line-height:1.6}
+.cal-links{display:flex;flex-direction:column;gap:10px;max-width:320px;margin:0 auto}
+.cal-link-btn{display:flex;align-items:center;justify-content:center;gap:10px;padding:13px 18px;border:1.5px solid var(--black);font-size:12.5px;font-weight:700;letter-spacing:.4px;background:var(--black);color:var(--white)}
+.cal-link-btn svg{width:16px;height:16px}
+.note-small{font-size:11.5px!important;color:#6b6b68!important;margin-top:18px!important}
+.reset-link{background:none;border:none;text-decoration:underline;font-size:12px;font-weight:700;margin-top:6px;color:var(--grey-900)}
+@media (max-width:560px){
+  .booking-overlay{padding:0}
+  .booking-body{padding:20px}
+  .booking-steps{overflow-x:auto}
+  .time-grid{grid-template-columns:repeat(3,1fr)}
+  .choice-grid{grid-template-columns:1fr}
+  .booking-modal{min-height:100vh}
+}
+
+/* ===== MAPA ===== */
+.map-overlay{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,.72);backdrop-filter:blur(4px)}
+.map-overlay.open{display:flex}
+.map-modal{width:min(900px,100%);background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 25px 80px rgba(0,0,0,.35);animation:mapModalIn .2s ease-out}
+@keyframes mapModalIn{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.map-head{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid #e5e5e5}
+.map-head h3{margin:0}
+.map-close{border:0;background:transparent;font-size:32px;line-height:1;color:#141414}
+.map-frame-wrap{width:100%;height:min(62vh,560px);background:#eee}
+.map-frame-wrap iframe{width:100%;height:100%;border:0;display:block}
+.map-foot{display:flex;justify-content:flex-end;padding:16px 22px;border-top:1px solid #e5e5e5}
+@media (max-width:600px){
+  .map-overlay{padding:12px}
+  .map-frame-wrap{height:58vh}
+  .map-foot{justify-content:stretch}
+  .map-foot .btn{width:100%;justify-content:center}
+}
+
+/* ===== GALERIA ===== */
+.gallery{padding:110px 0;background:#f5f5f3}
+.gallery .section-title{margin-bottom:70px}
+.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:70px;max-width:1100px;margin:0 auto}
+.gallery-barber{text-align:center}
+.gallery-barber h3{font-family:var(--font-black);font-size:28px;margin:0 0 30px;letter-spacing:-.5px}
+.vertical-carousel{width:100%;max-width:430px;margin:0 auto;position:relative}
+.carousel-window{width:100%;height:520px;overflow:hidden;position:relative;border-radius:2px}
+.carousel-track{display:flex;flex-direction:column;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.gallery-photo{width:100%;height:520px;flex-shrink:0;overflow:hidden;position:relative;
+  background:linear-gradient(160deg,#2b2b2b 0%,#141414 100%);display:flex;align-items:center;justify-content:center}
+.gallery-photo::before{content:attr(data-label);position:absolute;color:#8a8a87;font-family:var(--font-black);font-size:15px;letter-spacing:3px;text-align:center;line-height:1.8;white-space:pre}
+.gallery-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.gallery-photo:hover img{transform:scale(1.03)}
+.carousel-btn{width:48px;height:48px;border:1px solid #141414;background:#fff;color:#141414;display:flex;align-items:center;justify-content:center;position:absolute;left:50%;transform:translateX(-50%);z-index:5;transition:all .25s ease}
+.carousel-btn svg{width:20px;height:20px}
+.carousel-prev{top:-24px}
+.carousel-next{bottom:-24px}
+.carousel-btn:hover{background:#141414;color:#fff}
+.carousel-btn:disabled{opacity:.25;cursor:default}
+.carousel-btn:disabled:hover{background:#fff;color:#141414}
+@media (max-width:800px){
+  .gallery{padding:80px 20px}
+  .gallery-grid{grid-template-columns:1fr;gap:90px}
+  .gallery .section-title{margin-bottom:55px}
+  .gallery-barber h3{font-size:24px}
+  .vertical-carousel{max-width:380px}
+  .carousel-window,.gallery-photo{height:450px}
+}
+@media (max-width:480px){
+  .gallery{padding:70px 15px}
+  .gallery-grid{gap:80px}
+  .gallery-barber h3{font-size:21px;margin-bottom:25px}
+  .carousel-window,.gallery-photo{height:400px}
+  .carousel-btn{width:42px;height:42px}
+}
+
+/* ===== MENU MOBILE ===== */
+.mobile-menu-btn{display:none;width:42px;height:42px;padding:8px;border:none;background:transparent;flex-direction:column;justify-content:center;align-items:flex-end;gap:5px}
+.mobile-menu-btn span{display:block;height:2px;background:#141414}
+.mobile-menu-btn span:nth-child(1),.mobile-menu-btn span:nth-child(3){width:26px}
+.mobile-menu-btn span:nth-child(2){width:20px}
+.mobile-menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:9999;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease}
+.mobile-menu-overlay.open{opacity:1;visibility:visible}
+.mobile-menu{position:absolute;top:0;right:0;width:min(88%,380px);height:100vh;background:#f5f5f3;padding:28px 25px 35px;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);overflow-y:auto}
+.mobile-menu-overlay.open .mobile-menu{transform:translateX(0)}
+.mobile-menu-head{display:flex;align-items:center;justify-content:space-between;padding-bottom:25px;border-bottom:1px solid #d8d8d5}
+.mobile-menu-head img{width:145px;height:auto}
+.mobile-menu-close{width:42px;height:42px;border:1px solid #141414;background:transparent;font-size:31px;line-height:1;display:flex;align-items:center;justify-content:center;transition:all .25s ease}
+.mobile-menu-close:hover{background:#141414;color:#fff}
+.mobile-nav{display:flex;flex-direction:column;margin-top:25px}
+.mobile-nav a{color:#141414;font-family:var(--font-black);font-size:25px;letter-spacing:-.5px;padding:18px 0;border-bottom:1px solid #d8d8d5;transition:padding-left .25s ease,opacity .25s ease}
+.mobile-nav a:hover{padding-left:8px;opacity:.6}
+.mobile-booking{margin-top:auto;width:100%;justify-content:center}
+.mobile-booking svg{width:18px;height:18px}
+@media (max-width:800px){
+  header{position:relative}
+  .header-inner{height:75px;padding:0 20px}
+  nav,.header-booking{display:none}
+  .mobile-menu-btn{display:flex}
+  .logo img{max-width:145px}
+}
+@media (max-width:480px){
+  .header-inner{height:68px;padding:0 16px}
+  .mobile-menu{width:92%;padding:22px 20px 25px}
+  .mobile-nav a{font-size:22px;padding:16px 0}
+}
+
+/* ===== SOBRE ===== */
+.about{padding:120px 0;background:#f5f5f3}
+.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:100px;align-items:center}
+.about-content{max-width:720px}
+.about-content .field-label{margin-bottom:20px}
+.about-content .section-title{margin-bottom:35px;text-align:left}
+.about-content .section-title::after{margin-left:0}
+.about-intro{font-size:24px;line-height:1.45;font-weight:600;margin-bottom:25px;max-width:650px}
+.about-content p:not(.about-intro){font-size:16px;line-height:1.8;margin-bottom:18px;max-width:650px}
+.about-stats{display:flex;gap:50px;margin-top:50px;padding-top:30px;border-top:1px solid #d5d5d2}
+.about-stat{display:flex;flex-direction:column;gap:5px}
+.about-stat strong{font-family:var(--font-black);font-size:38px;line-height:1}
+.about-stat span{font-size:11px;font-weight:700;letter-spacing:1px}
+.about-side{min-height:500px;display:flex;flex-direction:column;justify-content:space-between;align-items:stretch}
+.about-quote{background:#141414;color:#fff;padding:60px 45px;min-height:300px;display:flex;flex-direction:column;justify-content:center;position:relative}
+.quote-mark{font-family:Georgia,serif;font-size:90px;line-height:.5;opacity:.35;position:absolute;top:45px;left:40px}
+.about-quote p{font-family:var(--font-black);font-size:32px;line-height:1.15;text-transform:uppercase;max-width:350px;margin:0 0 30px}
+.quote-line{width:50px;height:2px;background:#fff;margin-bottom:15px}
+.about-quote small{font-size:10px;font-weight:700;letter-spacing:2px}
+.about-year{display:flex;justify-content:space-between;align-items:flex-end;padding:30px 0 0;border-bottom:1px solid #141414}
+.about-year span{font-size:11px;font-weight:700;letter-spacing:2px;padding-bottom:8px}
+.about-year strong{font-family:var(--font-black);font-size:80px;line-height:.9}
+@media (max-width:768px){
+  .about{padding:80px 0}
+  .about-grid{grid-template-columns:1fr;gap:55px}
+  .about-intro{font-size:20px}
+  .about-content p:not(.about-intro){font-size:15px;line-height:1.7}
+  .about-stats{gap:25px;justify-content:space-between}
+  .about-stat strong{font-size:30px}
+  .about-stat span{font-size:9px}
+  .about-side{min-height:auto}
+  .about-quote{min-height:250px;padding:45px 30px}
+  .about-quote p{font-size:26px}
+  .about-year strong{font-size:60px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <img src="imagens/logo.png" alt="Pena Hair Studio" onerror="this.outerHTML='<span class=&quot;wordmark&quot;>PENA<small>HAIR STUDIO</small></span>'">
+    </div>
+
+    <nav>
+      <a href="#" class="active">INÍCIO</a>
+      <a href="#sobre">SOBRE NÓS</a>
+      <a href="#Servicos">SERVIÇOS</a>
+      <a href="#galeria">GALERIA</a>
+      <a href="#barbers">BARBEIROS</a>
+      <a href="#contactanos">CONTACTOS</a>
+    </nav>
+
+    <button class="btn js-open-booking header-booking" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+      MARCAR APPOINTMENT
+    </button>
+
+    <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MENU MOBILE -->
+<div class="mobile-menu-overlay" id="mobileMenu">
+  <div class="mobile-menu">
+    <div class="mobile-menu-head">
+      <span class="wordmark">PENA<small>HAIR STUDIO</small></span>
+      <button class="mobile-menu-close" id="mobileMenuClose" type="button" aria-label="Fechar menu">&times;</button>
+    </div>
+    <nav class="mobile-nav">
+      <a href="#" class="mobile-link">INÍCIO</a>
+      <a href="#sobre" class="mobile-link">SOBRE NÓS</a>
+      <a href="#Servicos" class="mobile-link">SERVIÇOS</a>
+      <a href="#galeria" class="mobile-link">GALERIA</a>
+      <a href="#barbers" class="mobile-link">BARBEIROS</a>
+      <a href="#contactanos" class="mobile-link">CONTACTOS</a>
+    </nav>
+    <button class="btn mobile-booking js-open-booking" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+      MARCAR APPOINTMENT
+    </button>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-inner">
+      <div class="hero-logo">
+        <img src="imagens/logo.png" alt="Pena Hair Studio" onerror="this.outerHTML='<span class=&quot;wordmark&quot;>PENA<small>HAIR STUDIO</small></span>'">
+      </div>
+      <h1>MAIS QUE UM CORTE,<br><span>É CONFIANÇA.</span></h1>
+      <p>Estilo, precisão e atitude. Transformamos o teu visual para realçar o melhor de ti.</p>
+      <button class="btn btn-arrow js-open-booking" type="button">
+        MARCAR APPOINTMENT
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="sobre">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-content">
+        <span class="field-label">SOBRE NÓS</span>
+        <h2 class="section-title">MAIS QUE UMA<br>BARBEARIA.</h2>
+        <p class="about-intro">Há 5 anos que o Pena Hair Studio transforma cortes em confiança, estilo e identidade.</p>
+        <p>Somos uma barbearia criada com uma missão simples: proporcionar um espaço onde cada cliente se sinta confortável, confiante e saia com um visual à sua medida.</p>
+        <p>Com apenas dois barbeiros, mantemos uma relação próxima com cada cliente e damos atenção a cada detalhe. Desde um corte clássico a um acabamento mais moderno, cada trabalho é feito com precisão e dedicação.</p>
+        <p>Para nós, uma ida à barbearia não é apenas marcar um corte. É parar, relaxar e sair de lá melhor do que entrou.</p>
+        <div class="about-stats">
+          <div class="about-stat"><strong>5+</strong><span>ANOS DE EXPERIÊNCIA</span></div>
+          <div class="about-stat"><strong>2</strong><span>BARBEIROS</span></div>
+          <div class="about-stat"><strong>100%</strong><span>DEDICAÇÃO</span></div>
+        </div>
+      </div>
+      <div class="about-side">
+        <div class="about-quote">
+          <span class="quote-mark">“</span>
+          <p>O teu estilo começa na cadeira.</p>
+          <span class="quote-line"></span>
+          <small>PENA HAIR STUDIO</small>
+        </div>
+        <div class="about-year"><span>DESDE</span><strong>2021</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="Servicos">
+  <div class="wrap">
+    <h2 class="section-title">OS NOSSOS SERVIÇOS</h2>
+    <div class="services-grid">
+      <div class="service">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 8.5L20 20M8.5 15.5L20 4"/></svg>
+        <h3>CORTE<br>MASCULINO</h3><div class="rule"></div>
+      </div>
+      <div class="service">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 4L6 16v4h4L22 8"/><path d="M14 8l2 2"/><path d="M6 16L2 20"/></svg>
+        <h3>BARBA<br>TRADICIONAL</h3><div class="rule"></div>
+      </div>
+      <div class="service">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 10h16v3H4z"/><path d="M6 13v7M9 13v9M12 13v7M15 13v9M18 13v7"/></svg>
+        <h3>ACABAMENTOS<br>PREMIUM</h3><div class="rule"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="barbers" id="barbers">
+  <div class="wrap">
+    <h2 class="section-title">OS NOSSOS BARBEIROS</h2>
+    <div class="barbers-grid">
+      <div class="barber-card">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-7 8-7s8 3 8 7"/></svg></div>
+        <h4>Pedro Pena</h4>
+        <div class="social-row">
+          <a href="https://www.instagram.com/pena.the.barber/" target="_blank" rel="noopener" aria-label="Instagram Pedro Pena"><svg viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="#141414"/></svg></a>
+        </div>
+      </div>
+      <div class="barber-card">
+        <div class="avatar"><svg viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-7 8-7s8 3 8 7"/></svg></div>
+        <h4>Rodrigo Melão</h4>
+        <div class="social-row">
+          <a href="https://www.instagram.com/melons_the_barber/" target="_blank" rel="noopener" aria-label="Instagram Rodrigo Melão"><svg viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="#141414"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="cta-center">
+      <a href="#galeria" class="btn btn-arrow">
+        VER TRABALHOS
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section class="gallery" id="galeria">
+  <div class="wrap">
+    <h2 class="section-title">GALERIA</h2>
+    <div class="gallery-grid">
+
+      <div class="gallery-barber">
+        <h3>PEDRO PENA</h3>
+        <div class="vertical-carousel">
+          <button class="carousel-btn carousel-prev" type="button" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg></button>
+          <div class="carousel-window">
+            <div class="carousel-track">
+              <div class="gallery-photo" data-label="PEDRO PENA&#10;TRABALHO 1"><img src="imagens/pena1.jpeg" alt="Pedro Pena - Trabalho 1" onerror="this.style.display='none'"></div>
+              <div class="gallery-photo" data-label="PEDRO PENA&#10;TRABALHO 2"><img src="imagens/pena2.jpeg" alt="Pedro Pena - Trabalho 2" onerror="this.style.display='none'"></div>
+              <div class="gallery-photo" data-label="PEDRO PENA&#10;TRABALHO 3"><img src="imagens/pena3.jpeg" alt="Pedro Pena - Trabalho 3" onerror="this.style.display='none'"></div>
+              <div class="gallery-photo" data-label="PEDRO PENA&#10;TRABALHO 4"><img src="imagens/pena4.jpeg" alt="Pedro Pena - Trabalho 4" onerror="this.style.display='none'"></div>
+            </div>
+          </div>
+          <button class="carousel-btn carousel-next" type="button" aria-label="Seguinte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        </div>
+      </div>
+
+      <div class="gallery-barber">
+        <h3>RODRIGO MELÃO</h3>
+        <div class="vertical-carousel">
+          <button class="carousel-btn carousel-prev" type="button" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg></button>
+          <div class="carousel-window">
+            <div class="carousel-track">
+              <div class="gallery-photo" data-label="RODRIGO MELÃO&#10;TRABALHO 1"><img src="imagens/melao1.jpeg" alt="Rodrigo Melão - Trabalho 1" onerror="this.style.display='none'"></div>
+              <div class="gallery-photo" data-label="RODRIGO MELÃO&#10;TRABALHO 2"><img src="imagens/melao2.jpeg" alt="Rodrigo Melão - Trabalho 2" onerror="this.style.display='none'"></div>
+              <div class="gallery-photo" data-label="RODRIGO MELÃO&#10;TRABALHO 3"><img src="imagens/melao3.jpeg" alt="Rodrigo Melão - Trabalho 3" onerror="this.style.display='none'"></div>
+              <div class="gallery-photo" data-label="RODRIGO MELÃO&#10;TRABALHO 4"><img src="imagens/melao4.jpeg" alt="Rodrigo Melão - Trabalho 4" onerror="this.style.display='none'"></div>
+              <div class="gallery-photo" data-label="RODRIGO MELÃO&#10;TRABALHO 5"><img src="imagens/melao5.jpeg" alt="Rodrigo Melão - Trabalho 5" onerror="this.style.display='none'"></div>
+            </div>
+          </div>
+          <button class="carousel-btn carousel-next" type="button" aria-label="Seguinte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer id="contactanos">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="foot-item">
+        <div class="foot-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.5"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div>
+        <div>
+          <h5>MARCA JÁ O TEU<br>APPOINTMENT</h5>
+          <p>Garante o teu horário e vem viver a experiência Pena.</p>
+          <button class="btn btn-arrow js-open-booking" type="button">
+            MARCAR APPOINTMENT
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="foot-item">
+        <div class="foot-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.35 1.79.68 2.63a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.45-1.45a2 2 0 0 1 2.11-.45c.84.33 1.73.56 2.63.68A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div>
+          <h5>CONTACTA-NOS</h5>
+          <p>+351 914 665 364<br>@penahairstudio</p>
+          <div class="foot-socials">
+            <a href="https://www.instagram.com/pena.the.barber/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="#141414"/></svg></a>
+            <a href="#" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.5"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="foot-item">
+        <div class="foot-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.5"><path d="M12 21s7-6.5 7-11a7 7 0 1 0-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <div>
+          <h5>ONDE ESTAMOS</h5>
+          <a href="https://www.google.com/maps?q=38.5665883,-9.0391387" class="link" target="_blank" rel="noopener">Ver localização no mapa</a><br>
+          <button type="button" class="btn btn-arrow js-open-map">
+            VER NO MAPA
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="sim-footer">Projeto de portfolio · Site de demonstração. O sistema de marcações é apenas uma simulação: nenhum dado é enviado ou guardado num servidor.</div>
+
+<!-- MODAL DO MAPA -->
+<div class="map-overlay" id="mapOverlay" aria-hidden="true">
+  <div class="map-modal" role="dialog" aria-modal="true" aria-labelledby="mapTitle">
+    <div class="map-head">
+      <h3 id="mapTitle">ONDE ESTAMOS</h3>
+      <button class="map-close js-close-map" type="button" aria-label="Fechar">&times;</button>
+    </div>
+    <div class="map-frame-wrap">
+      <iframe src="https://www.google.com/maps?q=38.5665883,-9.0391387&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" title="Mapa Pena Hair Studio"></iframe>
+    </div>
+    <div class="map-foot">
+      <a class="btn btn-arrow" href="https://www.google.com/maps?q=38.5665883,-9.0391387" target="_blank" rel="noopener">
+        ABRIR NO GOOGLE MAPS
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DE MARCAÇÃO -->
+<div class="booking-overlay" id="bookingOverlay">
+  <div class="booking-modal" role="dialog" aria-modal="true" aria-labelledby="bookingTitle">
+    <div class="booking-head">
+      <h3 id="bookingTitle">MARCAR APPOINTMENT</h3>
+      <button class="booking-close js-close-booking" type="button" aria-label="Fechar">&times;</button>
+    </div>
+    <div class="sim-banner">⚠ Simulação para portfolio: as marcações não são reais nem são enviadas a ninguém.</div>
+
+    <div class="booking-steps">
+      <div class="booking-step-tab active" data-step="1">1. SERVIÇO</div>
+      <div class="booking-step-tab" data-step="2">2. BARBEIRO</div>
+      <div class="booking-step-tab" data-step="3">3. DIA &amp; HORA</div>
+      <div class="booking-step-tab" data-step="4">4. CONTACTO</div>
+    </div>
+
+    <div class="booking-body">
+
+      <div class="booking-panel active" data-panel="1">
+        <span class="field-label">ESCOLHE O SERVIÇO</span>
+        <div class="choice-grid" id="serviceGrid">
+          <div class="choice-card" data-service="Corte Masculino" data-duration="30">CORTE MASCULINO<small>30 min · 15€</small></div>
+          <div class="choice-card" data-service="Barba Tradicional" data-duration="30">BARBA TRADICIONAL<small>30 min · 10€</small></div>
+          <div class="choice-card" data-service="Corte + Barba" data-duration="60">CORTE + BARBA<small>60 min · 22€</small></div>
+          <div class="choice-card" data-service="Acabamentos Premium" data-duration="30">ACABAMENTOS PREMIUM<small>30 min · 8€</small></div>
+        </div>
+      </div>
+
+      <div class="booking-panel" data-panel="2">
+        <span class="field-label">ESCOLHE O BARBEIRO</span>
+        <div class="choice-grid" id="barberGrid">
+          <div class="choice-card" data-barber="Pedro Pena">Pena<small>Barbeiro</small></div>
+          <div class="choice-card" data-barber="Rodrigo Melão">Melão<small>Barbeiro</small></div>
+        </div>
+      </div>
+
+      <div class="booking-panel" data-panel="3">
+        <span class="field-label">ESCOLHE O DIA</span>
+        <div class="cal-head">
+          <div class="cal-nav">
+            <button type="button" id="calPrev" aria-label="Mês anterior">&larr;</button>
+            <button type="button" id="calNext" aria-label="Mês seguinte">&rarr;</button>
+          </div>
+          <span id="calMonthLabel"></span>
+          <span style="width:76px"></span>
+        </div>
+        <div class="cal-grid" id="calGrid"></div>
+        <span class="field-label">ESCOLHE A HORA</span>
+        <div class="time-grid" id="timeGrid"></div>
+      </div>
+
+      <div class="booking-panel" data-panel="4">
+        <div class="summary-box" id="summaryBox"></div>
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="cName">NOME COMPLETO</label>
+            <input type="text" id="cName" placeholder="O teu nome" autocomplete="off">
+          </div>
+          <div class="form-field">
+            <label for="cPhone">TELEMÓVEL</label>
+            <input type="tel" id="cPhone" placeholder="+351 9XX XXX XXX" autocomplete="off">
+          </div>
+          <div class="form-field">
+            <label for="cEmail">EMAIL</label>
+            <input type="email" id="cEmail" placeholder="o.teu.email@exemplo.com" autocomplete="off">
+          </div>
+        </div>
+      </div>
+
+      <div class="booking-panel" data-panel="5">
+        <div class="success-wrap">
+          <div class="success-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <h4>MARCAÇÃO CONFIRMADA</h4>
+          <p id="successText"></p>
+          <div class="cal-links">
+            <div class="cal-link-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+              MARCAÇÃO SIMULADA COM SUCESSO
+            </div>
+          </div>
+          <p class="note-small">Isto é apenas uma demonstração: nenhuma marcação real foi criada. O horário fica ocupado neste navegador para mostrares o funcionamento.</p>
+          <button type="button" class="reset-link" id="resetDemo">Limpar marcações de demonstração</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="booking-foot" id="bookingFoot">
+      <button type="button" class="btn btn-ghost js-back">VOLTAR</button>
+      <button type="button" class="btn btn-primary js-next" disabled>CONTINUAR</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  function pad(n){ return n < 10 ? '0' + n : '' + n; }
+
+  /* ---------- modal do mapa ---------- */
+  var mapOverlay = document.getElementById('mapOverlay');
+  var overlay = document.getElementById('bookingOverlay');
+
+  function syncScroll(){
+    var anyOpen = mapOverlay.classList.contains('open') ||
+                  overlay.classList.contains('open') ||
+                  document.getElementById('mobileMenu').classList.contains('open');
+    document.body.style.overflow = anyOpen ? 'hidden' : '';
+  }
+  function closeMap(){
+    mapOverlay.classList.remove('open');
+    mapOverlay.setAttribute('aria-hidden','true');
+    syncScroll();
+  }
+  document.querySelectorAll('.js-open-map').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      mapOverlay.classList.add('open');
+      mapOverlay.setAttribute('aria-hidden','false');
+      syncScroll();
+    });
+  });
+  document.querySelectorAll('.js-close-map').forEach(function(b){ b.addEventListener('click', closeMap); });
+  mapOverlay.addEventListener('click', function(e){ if(e.target === mapOverlay) closeMap(); });
+
+  /* ---------- "base de dados" simulada (localStorage) ---------- */
+  var STORE_KEY = 'penaDemoBookings';
+  function loadBookings(){
+    try { return JSON.parse(localStorage.getItem(STORE_KEY)) || []; } catch(e){ return memoryBookings; }
+  }
+  var memoryBookings = [];
+  function saveBooking(b){
+    var list = loadBookings();
+    list.push(b);
+    memoryBookings = list;
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(list)); } catch(e){}
+  }
+  function clearBookings(){
+    memoryBookings = [];
+    try { localStorage.removeItem(STORE_KEY); } catch(e){}
+  }
+
+  /* ---------- estado ---------- */
+  var state = { service:null, duration:30, barber:null, date:null, time:null };
+  var currentStep = 1;
+
+  var panels = document.querySelectorAll('.booking-panel');
+  var tabs = document.querySelectorAll('.booking-step-tab');
+  var btnNext = document.querySelector('.js-next');
+  var btnBack = document.querySelector('.js-back');
+  var bookingFoot = document.getElementById('bookingFoot');
+
+  /* ---------- abrir / fechar ---------- */
+  function openBooking(){
+    overlay.classList.add('open');
+    syncScroll();
+    goToStep(1);
+  }
+  function closeBooking(){
+    overlay.classList.remove('open');
+    syncScroll();
+  }
+  document.querySelectorAll('.js-open-booking').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.getElementById('mobileMenu').classList.remove('open');
+      openBooking();
+    });
+  });
+  document.querySelectorAll('.js-close-booking').forEach(function(b){ b.addEventListener('click', closeBooking); });
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) closeBooking(); });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key !== 'Escape') return;
+    if(mapOverlay.classList.contains('open')) closeMap();
+    else if(overlay.classList.contains('open')) closeBooking();
+    else if(document.getElementById('mobileMenu').classList.contains('open')) closeMobileMenu();
+  });
+
+  /* ---------- passos ---------- */
+  function goToStep(n){
+    currentStep = n;
+    panels.forEach(function(p){ p.classList.toggle('active', parseInt(p.dataset.panel,10) === n); });
+    tabs.forEach(function(t){
+      var s = parseInt(t.dataset.step,10);
+      t.classList.toggle('active', s === n);
+      t.classList.toggle('done', s < n);
+    });
+    if(n === 3){ renderCalendar(); renderTimeSlots(); }
+    if(n === 5){
+      bookingFoot.style.display = 'none';
+    } else {
+      bookingFoot.style.display = 'flex';
+      btnBack.style.visibility = (n === 1) ? 'hidden' : 'visible';
+      btnNext.textContent = (n === 4) ? 'CONFIRMAR MARCAÇÃO' : 'CONTINUAR';
+      updateNextEnabled();
+    }
+    overlay.scrollTop = 0;
+  }
+
+  function validContactFields(){
+    var name = document.getElementById('cName').value.trim();
+    var phone = document.getElementById('cPhone').value.trim();
+    var email = document.getElementById('cEmail').value.trim();
+    return name.length > 1 && phone.replace(/\D/g,'').length >= 9 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+  function updateNextEnabled(){
+    var ok = false;
+    if(currentStep === 1) ok = !!state.service;
+    if(currentStep === 2) ok = !!state.barber;
+    if(currentStep === 3) ok = !!(state.date && state.time);
+    if(currentStep === 4) ok = validContactFields();
+    btnNext.disabled = !ok;
+  }
+  ['cName','cPhone','cEmail'].forEach(function(id){
+    document.getElementById(id).addEventListener('input', updateNextEnabled);
+  });
+
+  btnBack.addEventListener('click', function(){ if(currentStep > 1) goToStep(currentStep - 1); });
+  btnNext.addEventListener('click', function(){
+    if(currentStep < 4){
+      if(currentStep === 3) renderSummary();
+      goToStep(currentStep + 1);
+    } else {
+      confirmBooking();
+    }
+  });
+
+  /* passo 1 */
+  document.getElementById('serviceGrid').addEventListener('click', function(e){
+    var card = e.target.closest('.choice-card'); if(!card) return;
+    document.querySelectorAll('#serviceGrid .choice-card').forEach(function(c){ c.classList.remove('selected'); });
+    card.classList.add('selected');
+    state.service = card.dataset.service;
+    state.duration = parseInt(card.dataset.duration,10);
+    state.time = null;
+    updateNextEnabled();
+  });
+
+  /* passo 2 */
+  document.getElementById('barberGrid').addEventListener('click', function(e){
+    var card = e.target.closest('.choice-card'); if(!card) return;
+    document.querySelectorAll('#barberGrid .choice-card').forEach(function(c){ c.classList.remove('selected'); });
+    card.classList.add('selected');
+    state.barber = card.dataset.barber;
+    state.time = null;
+    updateNextEnabled();
+  });
+
+  /* ---------- passo 3: calendário ---------- */
+  var DOW = ['DOM','SEG','TER','QUA','QUI','SEX','SÁB'];
+  var MONTHS = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+
+  var today = new Date(); today.setHours(0,0,0,0);
+  var viewYear = today.getFullYear();
+  var viewMonth = today.getMonth();
+
+  var calGrid = document.getElementById('calGrid');
+  var calMonthLabel = document.getElementById('calMonthLabel');
+  var calPrev = document.getElementById('calPrev');
+  var calNext = document.getElementById('calNext');
+
+  function dateKey(d){ return d.getFullYear() + '-' + pad(d.getMonth()+1) + '-' + pad(d.getDate()); }
+
+  function renderCalendar(){
+    calMonthLabel.textContent = MONTHS[viewMonth] + ' ' + viewYear;
+    calGrid.innerHTML = '';
+
+    DOW.forEach(function(d){
+      var el = document.createElement('div');
+      el.className = 'cal-dow'; el.textContent = d;
+      calGrid.appendChild(el);
+    });
+
+    var startOffset = new Date(viewYear, viewMonth, 1).getDay();
+    var daysInMonth = new Date(viewYear, viewMonth+1, 0).getDate();
+
+    for(var i=0;i<startOffset;i++){
+      var empty = document.createElement('div');
+      empty.className = 'cal-day empty';
+      calGrid.appendChild(empty);
+    }
+
+    var maxDate = new Date(today); maxDate.setDate(maxDate.getDate() + 60);
+
+    for(var day=1; day<=daysInMonth; day++){
+      var d = new Date(viewYear, viewMonth, day);
+      var el = document.createElement('div');
+      el.className = 'cal-day';
+      el.textContent = day;
+
+      var disabled = d < today || d.getDay() === 0 || d > maxDate;
+      if(disabled){
+        el.classList.add('disabled');
+      } else {
+        el.classList.add('available');
+        el.addEventListener('click', (function(dateObj){
+          return function(){
+            document.querySelectorAll('.cal-day.selected').forEach(function(c){ c.classList.remove('selected'); });
+            this.classList.add('selected');
+            state.date = dateObj;
+            state.time = null;
+            renderTimeSlots();
+            updateNextEnabled();
+          };
+        })(new Date(d)));
+      }
+      if(d.getTime() === today.getTime()) el.classList.add('today');
+      if(state.date && dateKey(state.date) === dateKey(d)) el.classList.add('selected');
+      calGrid.appendChild(el);
+    }
+
+    calPrev.disabled = (viewYear === today.getFullYear() && viewMonth === today.getMonth());
+    var maxView = maxDate.getFullYear()*12 + maxDate.getMonth();
+    calNext.disabled = (viewYear*12 + viewMonth >= maxView);
+  }
+
+  calPrev.addEventListener('click', function(){
+    viewMonth--; if(viewMonth < 0){ viewMonth = 11; viewYear--; }
+    renderCalendar();
+  });
+  calNext.addEventListener('click', function(){
+    viewMonth++; if(viewMonth > 11){ viewMonth = 0; viewYear++; }
+    renderCalendar();
+  });
+
+  /* ---------- disponibilidade simulada ---------- */
+  var SLOTS = ["09:00","09:30","10:00","10:30","11:00","11:30",
+               "14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30"];
+  // Horário: 09:00–12:00 e 14:00–19:00
+  var WINDOWS = [[9*60, 12*60],[14*60, 19*60]];
+
+  function toMin(t){ var p = t.split(':'); return parseInt(p[0],10)*60 + parseInt(p[1],10); }
+
+  // hash determinístico para gerar horários "já ocupados" de forma consistente
+  function hash(str){
+    var h = 2166136261;
+    for(var i=0;i<str.length;i++){ h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); }
+    return (h >>> 0);
+  }
+
+  function busyIntervals(dateObj, barber){
+    var key = dateKey(dateObj), out = [];
+    // marcações "fictícias" já existentes
+    SLOTS.forEach(function(t){
+      if(hash(key + '|' + barber + '|' + t) % 100 < 26) out.push([toMin(t), toMin(t) + 30]);
+    });
+    // marcações feitas nesta demonstração
+    loadBookings().forEach(function(b){
+      if(b.date === key && b.barber === barber) out.push([toMin(b.time), toMin(b.time) + b.duration]);
+    });
+    return out;
+  }
+
+  function isSlotAvailable(dateObj, barber, time, duration){
+    var start = toMin(time), end = start + duration;
+    var fits = WINDOWS.some(function(w){ return start >= w[0] && end <= w[1]; });
+    if(!fits) return false;
+    if(dateKey(dateObj) === dateKey(new Date())){
+      var now = new Date();
+      if(start <= now.getHours()*60 + now.getMinutes()) return false;
+    }
+    return !busyIntervals(dateObj, barber).some(function(b){ return start < b[1] && end > b[0]; });
+  }
+
+  function renderTimeSlots(){
+    var timeGrid = document.getElementById('timeGrid');
+    timeGrid.innerHTML = '';
+    if(!state.date){
+      timeGrid.innerHTML = '<div class="time-empty-msg">Escolhe primeiro um dia no calendário.</div>';
+      return;
+    }
+    SLOTS.forEach(function(t){
+      var el = document.createElement('div');
+      el.className = 'time-slot';
+      el.textContent = t;
+      if(!isSlotAvailable(state.date, state.barber, t, state.duration)){
+        el.classList.add('taken');
+        el.title = 'Indisponível';
+      } else {
+        el.addEventListener('click', function(){
+          document.querySelectorAll('.time-slot.selected').forEach(function(c){ c.classList.remove('selected'); });
+          el.classList.add('selected');
+          state.time = t;
+          updateNextEnabled();
+        });
+        if(state.time === t) el.classList.add('selected');
+      }
+      timeGrid.appendChild(el);
+    });
+    if(state.time && !isSlotAvailable(state.date, state.barber, state.time, state.duration)) state.time = null;
+    updateNextEnabled();
+  }
+
+  /* ---------- passo 4: resumo ---------- */
+  function formatDatePT(d){
+    var dias = ['Domingo','Segunda-feira','Terça-feira','Quarta-feira','Quinta-feira','Sexta-feira','Sábado'];
+    return dias[d.getDay()] + ', ' + d.getDate() + ' de ' + MONTHS[d.getMonth()] + ' de ' + d.getFullYear();
+  }
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+
+  function renderSummary(){
+    function row(l,v){ return '<div class="summary-row"><span>'+l+'</span><span>'+esc(v)+'</span></div>'; }
+    document.getElementById('summaryBox').innerHTML =
+      row('Serviço', state.service) + row('Barbeiro', state.barber) +
+      row('Dia', formatDatePT(state.date)) + row('Hora', state.time) +
+      row('Duração', state.duration + ' minutos');
+  }
+
+  /* ---------- confirmação (simulada) ---------- */
+  function confirmBooking(){
+    // revalidar disponibilidade
+    if(!isSlotAvailable(state.date, state.barber, state.time, state.duration)){
+      alert('Esse horário acabou de ficar ocupado. Escolhe outro horário.');
+      state.time = null;
+      goToStep(3);
+      return;
+    }
+    btnNext.disabled = true;
+    btnNext.textContent = 'A ENVIAR...';
+
+    setTimeout(function(){
+      saveBooking({
+        service: state.service, duration: state.duration, barber: state.barber,
+        date: dateKey(state.date), time: state.time
+      });
+      document.getElementById('successText').textContent =
+        state.service + ' com ' + state.barber + ', ' + formatDatePT(state.date) + ' às ' + state.time + '.';
+      ['cName','cPhone','cEmail'].forEach(function(id){ document.getElementById(id).value = ''; });
+      goToStep(5);
+    }, 900);
+  }
+
+  document.getElementById('resetDemo').addEventListener('click', function(){
+    clearBookings();
+    state.service = state.barber = state.date = state.time = null;
+    document.querySelectorAll('.choice-card.selected').forEach(function(c){ c.classList.remove('selected'); });
+    goToStep(1);
+  });
+
+  /* ---------- carrosséis ---------- */
+  document.querySelectorAll('.vertical-carousel').forEach(function(carousel){
+    var track = carousel.querySelector('.carousel-track');
+    var slides = carousel.querySelectorAll('.gallery-photo');
+    var prevBtn = carousel.querySelector('.carousel-prev');
+    var nextBtn = carousel.querySelector('.carousel-next');
+    var current = 0;
+
+    function update(){
+      var h = slides[0].offsetHeight;
+      track.style.transform = 'translateY(-' + (current * h) + 'px)';
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === slides.length - 1;
+    }
+    prevBtn.addEventListener('click', function(){ if(current > 0){ current--; update(); } });
+    nextBtn.addEventListener('click', function(){ if(current < slides.length - 1){ current++; update(); } });
+    window.addEventListener('resize', update);
+    update();
+  });
+
+  /* ---------- menu mobile ---------- */
+  var mobileMenu = document.getElementById('mobileMenu');
+  function openMobileMenu(){ mobileMenu.classList.add('open'); syncScroll(); }
+  function closeMobileMenu(){ mobileMenu.classList.remove('open'); syncScroll(); }
+  document.getElementById('mobileMenuBtn').addEventListener('click', openMobileMenu);
+  document.getElementById('mobileMenuClose').addEventListener('click', closeMobileMenu);
+  mobileMenu.addEventListener('click', function(e){ if(e.target === mobileMenu) closeMobileMenu(); });
+  document.querySelectorAll('.mobile-link').forEach(function(l){ l.addEventListener('click', closeMobileMenu); });
+
+  renderCalendar();
+  renderTimeSlots();
+})();
+</script>
+
+</body>
+</html>
